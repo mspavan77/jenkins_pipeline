@@ -3,9 +3,8 @@ pipeline {
 agent any
 stages {
     stage('Build') {
-        agent { label 'pavan_label' }
         steps {
-            echo "Success"
+            echo "this is build stage"
         }
     }
     stage('Test') {
