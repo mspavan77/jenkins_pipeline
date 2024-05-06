@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    environment {
+        NAME = 'Pavan'
+    }
+    stages{
+        stage ('Build'){
+            steps {
+                echo "$NAME"
+                sh '''
+                    sleep 5
+                    echo "This is build stage by $NAME"
+                    exit 0
+                    '''
+            }
+        }
+        stage ('Testing Parallel') {
+            parallel {
+                stage ('Test on Chrome') {
+                    steps {
+                        echo "this is test on Chrome"
+                        sleep 5
+                    }
+                }
+                stage ('Test on Safari') {
+                    steps {
+                        echo "this is test on safari"
+                        sleep 5
+                    }
+                }
+            }
+        }
+        stage ('Deploy') {
+            parallel {
+                stage ('Server 1') {
+                    steps {
+                        echo "this is server 1"
+                        sleep 5
+                    }
+                }
+                stage ('Server 2') {
+                    steps {
+                        echo "this is server 2"
+                        sleep 5
+                    }
+                }
+            }
+        }
+    }
+}
