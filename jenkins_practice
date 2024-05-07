@@ -16,29 +16,30 @@ pipeline {
                     }
                 }
             }
-            }
-            stage ('Test on differnt broswer') {
-                parallel {
-                    stage ('Checking in chrome') {
+        }
+        stage ('Test on different browser') {
+            parallel {
+                stage ('Checking in chrome') {
                     steps{
-                        echo "tetsing on chrome"
+                        echo "testing on chrome"
                         sleep 5
                     }
-                    }
-                    stage ('Checking in safari'){
-                        steps {
-                            echo "testing on safari"
-                            sleep 5
-                        }
+                }
+                stage ('Checking in safari'){
+                    steps {
+                        echo "testing on safari"
+                        sleep 5
                     }
                 }
             }
-            stage ("Deploy") {
-                steps {
-                    echo "this is deploy stage"
-                    sleep 5
-                }
+        }
+        stage ("Deploy") {
+            steps {
+                echo "this is deploy stage"
+                sleep 5
             }
         }
     }
 }
+
+    
