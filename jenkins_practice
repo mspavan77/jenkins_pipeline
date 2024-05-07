@@ -1,1 +1,44 @@
-
+pipeline {
+    agent any
+    stages {
+        stage ('Build parallel') {
+            parallel {
+                stage ('Build on ubuntu server') {
+                    steps {
+                        echo "this is building in ubuntu server"
+                        sleep 5
+                    }
+                }
+                stage ('Build on RedHat server') {
+                    steps {
+                        echo "this is building in redhat server"
+                        sleep 5
+                    }
+                }
+            }
+            }
+            stage ('Test on differnt broswer') {
+                parallel {
+                    stage ('Checking in chrome') {
+                    steps{
+                        echo "tetsing on chrome"
+                        sleep 5
+                    }
+                    }
+                    stage ('Checking in safari'){
+                        steps {
+                            echo "testing on safari"
+                            sleep 5
+                        }
+                    }
+                }
+            }
+            stage ("Deploy") {
+                steps {
+                    echo "this is deploy stage"
+                    sleep 5
+                }
+            }
+        }
+    }
+}
