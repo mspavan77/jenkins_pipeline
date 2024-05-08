@@ -7,7 +7,7 @@ pipeline {
                 steps {
                 echo "this is build stage"
                 sh '''
-                    cd /var/lib/jenkins/workspace/pipeline_1
+                    cd /home/ubuntu/workspace/pipeline_1
                     make ABC.exe
                     exit 0
                     '''
