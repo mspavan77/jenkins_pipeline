@@ -17,14 +17,8 @@ pipeline {
             }
         }
         stage('Build') {
-            agent { label 'pavan_label' }
                 steps {
                 echo "this is build stage"
-                sh '''
-                    cd /home/ubuntu/workspace/pipeline_1
-                    make ABC.exe
-                    exit 0
-                    '''
         }
     }
         stage('Test') {
