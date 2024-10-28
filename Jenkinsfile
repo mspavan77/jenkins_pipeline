@@ -26,10 +26,5 @@ pipeline {
                 echo "this is a build test"
         }
     }
-        stage('Deploy') {
-                steps {
-                echo "this is a build stage"
-        }
-    }
 }
 }
